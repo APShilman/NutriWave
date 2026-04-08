@@ -45,7 +45,7 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 md:py-32 overflow-hidden"
       style={{ background: "transparent" }}
     >
       <span className="section-number">08</span>
@@ -56,7 +56,7 @@ export default function FAQ() {
       <OrganicBlob className="deco w-[300px] h-[300px] top-[-5%] left-[-8%] text-[#C8E6C9] opacity-[0.05]" variant={2} />
 
       <div ref={ref} className="animate-on-scroll max-w-[800px] mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <h2 className="font-[var(--font-heading)] text-[clamp(32px,4vw,40px)] font-medium text-text-main">
             Частые вопросы
           </h2>

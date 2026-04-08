@@ -53,7 +53,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 md:py-32 overflow-hidden"
       style={{ background: "transparent" }}
     >
       <span className="section-number">03</span>
@@ -65,7 +65,7 @@ export default function Services() {
       <div className="deco w-[250px] h-[250px] rounded-full bg-[#C8E6C9]/30 blur-[80px] bottom-[-5%] left-[10%]" />
 
       <div ref={ref} className="animate-on-scroll max-w-[1200px] mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <h2 className="font-[var(--font-heading)] text-[clamp(32px,4vw,40px)] font-medium text-text-main">
             Услуги
           </h2>
@@ -117,14 +117,14 @@ export default function Services() {
                 )}
 
                 {service.buttons ? (
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-col sm:flex-row flex-wrap gap-3">
                     {service.buttons.map((btn) => (
                       <a
                         key={btn.label}
                         href={btn.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center px-7 py-3.5 text-sm font-bold uppercase tracking-[0.05em] rounded-full transition-all duration-300 group/btn bg-primary text-white hover:bg-primary-dark hover:shadow-[0_4px_20px_rgba(58,125,92,0.3)] hover:scale-[1.03]"
+                        className="inline-flex items-center justify-center px-5 sm:px-7 py-3 sm:py-3.5 text-sm font-bold uppercase tracking-[0.05em] rounded-full transition-all duration-300 group/btn bg-primary text-white hover:bg-primary-dark hover:shadow-[0_4px_20px_rgba(58,125,92,0.3)] hover:scale-[1.03]"
                       >
                         {btn.label}
                         <svg className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

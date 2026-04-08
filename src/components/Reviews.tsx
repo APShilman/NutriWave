@@ -267,7 +267,7 @@ export default function Reviews() {
   return (
     <section
       id="reviews"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 md:py-32 overflow-hidden"
       style={{ background: "transparent" }}
     >
       <span className="section-number">07</span>
@@ -279,7 +279,7 @@ export default function Reviews() {
       <div className="deco w-[250px] h-[250px] rounded-full bg-[#FFF8E1]/25 blur-[80px] top-[10%] right-[5%]" />
 
       <div ref={ref} className="animate-on-scroll max-w-[1200px] mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <h2 className="font-[var(--font-heading)] text-[clamp(32px,4vw,40px)] font-medium text-text-main">
             Отзывы клиентов
           </h2>

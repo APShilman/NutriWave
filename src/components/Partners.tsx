@@ -117,7 +117,7 @@ export default function Partners() {
     )}
     <section
       id="partners"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 md:py-32 overflow-hidden"
       style={{ background: "transparent" }}
     >
       <span className="section-number">05</span>
@@ -129,7 +129,7 @@ export default function Partners() {
       <div className="deco w-[250px] h-[250px] rounded-full bg-[#FFF3E0]/30 blur-[80px] bottom-[-5%] left-[5%]" />
 
       <div ref={ref} className="animate-on-scroll max-w-[1200px] mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <h2 className="font-[var(--font-heading)] text-[clamp(32px,4vw,40px)] font-medium text-text-main">
             Профилактика здоровья с выгодой
           </h2>

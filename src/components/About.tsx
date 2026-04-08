@@ -60,7 +60,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 md:py-32 overflow-hidden"
       style={{ background: "transparent" }}
     >
       <span className="section-number">02</span>
@@ -71,18 +71,18 @@ export default function About() {
       <OrganicBlob className="deco w-[350px] h-[350px] top-[-10%] left-[-8%] text-[#C8E6C9] opacity-[0.08]" variant={3} />
       <div className="deco w-[300px] h-[300px] rounded-full bg-[#FFF8E1]/30 blur-[80px] bottom-[10%] right-[-5%]" />
 
-      <div ref={ref} className="animate-on-scroll max-w-[1200px] mx-auto px-6">
-        <div className="text-center mb-16">
+      <div ref={ref} className="animate-on-scroll max-w-[1200px] mx-auto px-4 sm:px-6">
+        <div className="text-center mb-10 md:mb-16">
           <h2 className="font-[var(--font-heading)] text-[clamp(32px,4vw,40px)] font-medium text-text-main">
             Обо мне
           </h2>
           <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center overflow-hidden">
           {/* Photo */}
-          <div className="relative">
-            <div className="w-full max-w-[400px] mx-auto aspect-[3/4] rounded-[24px] overflow-hidden shadow-[0_8px_40px_rgba(58,125,92,0.1)]">
+          <div className="relative min-w-0">
+            <div className="w-full max-w-[280px] sm:max-w-[400px] mx-auto aspect-[3/4] rounded-[24px] overflow-hidden shadow-[0_8px_40px_rgba(58,125,92,0.1)]">
               <Image
                 src="/images/photos/anna-about.webp"
                 alt="Анна Шильман — нутрициолог"
@@ -113,7 +113,7 @@ export default function About() {
           </div>
 
           {/* Text */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 min-w-0">
             <p className="text-lg text-text-main leading-relaxed">
               Здравствуйте! Я Анна Шильман — клинический и перинатальный нутрициолог,
               натуропат, консультант по генетике. Мой подход — это доказательная

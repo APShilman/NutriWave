@@ -8,7 +8,7 @@ export default function Contacts() {
   return (
     <section
       id="contacts"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 md:py-32 overflow-hidden"
       style={{ background: "transparent" }}
     >
       <span className="section-number">09</span>
@@ -20,7 +20,7 @@ export default function Contacts() {
       <div className="deco w-[250px] h-[250px] rounded-full bg-[#FFF8E1]/25 blur-[80px] bottom-[10%] left-[5%]" />
 
       <div ref={ref} className="animate-on-scroll max-w-[1200px] mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <h2 className="font-[var(--font-heading)] text-[clamp(32px,4vw,40px)] font-medium text-text-main">
             Контакты
           </h2>
@@ -112,7 +112,7 @@ export default function Contacts() {
           </div>
 
           {/* Contact form */}
-          <div className="bg-white rounded-[24px] p-8 shadow-[0_2px_20px_rgba(0,0,0,0.04)]">
+          <div className="bg-white rounded-[24px] p-5 sm:p-8 shadow-[0_2px_20px_rgba(0,0,0,0.04)]">
             <h3 className="font-[var(--font-heading)] text-2xl font-semibold text-text-main mb-6">
               Записаться на консультацию
             </h3>

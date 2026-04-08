@@ -6,11 +6,11 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-[90vh] sm:min-h-screen flex items-center overflow-hidden"
       style={{ background: "transparent" }}
     >
 
-      <div className="max-w-[1200px] mx-auto px-6 pt-24 pb-16 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-20 sm:pt-24 pb-12 sm:pb-16 grid lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
         {/* Text content */}
         <div className="flex flex-col gap-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent-warm rounded-full w-fit">
@@ -33,10 +33,10 @@ export default function Hero() {
             Онлайн и офлайн консультации
           </p>
 
-          <div className="flex flex-wrap gap-4 mt-2">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-2">
             <a
               href="#contacts"
-              className="inline-flex items-center px-8 py-4 bg-primary text-white text-sm font-bold uppercase tracking-[0.05em] rounded-full hover:bg-primary-dark transition-all duration-300 hover:shadow-[0_4px_16px_rgba(58,125,92,0.25)] hover:scale-[1.03] group"
+              className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-primary text-white text-sm font-bold uppercase tracking-[0.05em] rounded-full hover:bg-primary-dark transition-all duration-300 hover:shadow-[0_4px_16px_rgba(58,125,92,0.25)] hover:scale-[1.03] group"
             >
               Записаться на консультацию
               <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -45,7 +45,7 @@ export default function Hero() {
             </a>
             <a
               href="#about"
-              className="inline-flex items-center px-8 py-4 border-[1.5px] border-primary text-primary text-sm font-bold uppercase tracking-[0.05em] rounded-full hover:bg-accent-warm transition-all duration-300"
+              className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 border-[1.5px] border-primary text-primary text-sm font-bold uppercase tracking-[0.05em] rounded-full hover:bg-accent-warm transition-all duration-300"
             >
               Узнать больше
             </a>
@@ -59,7 +59,7 @@ export default function Hero() {
           </blockquote>
 
           {/* Trust badges */}
-          <div className="flex gap-8 mt-6 pt-6 border-t border-primary-light/30">
+          <div className="flex gap-6 sm:gap-8 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-primary-light/30">
             <div className="text-center">
               <span className="font-[var(--font-heading)] text-3xl font-semibold text-primary">100+</span>
               <span className="block text-xs text-text-secondary mt-1 uppercase tracking-wider">клиентов</span>

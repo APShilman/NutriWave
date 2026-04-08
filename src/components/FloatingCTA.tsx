@@ -13,7 +13,7 @@ export default function FloatingCTA() {
   return (
     <a
       href="#contacts"
-      className={`fixed bottom-6 right-6 z-40 flex items-center gap-2 px-6 py-3.5 bg-primary text-white text-sm font-bold uppercase tracking-[0.05em] rounded-full shadow-[0_4px_20px_rgba(58,125,92,0.3)] pulse-cta transition-all duration-500 hover:bg-primary-dark hover:scale-105 ${
+      className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 px-4 py-3 sm:px-6 sm:py-3.5 bg-primary text-white text-xs sm:text-sm font-bold uppercase tracking-[0.05em] rounded-full shadow-[0_4px_20px_rgba(58,125,92,0.3)] pulse-cta transition-all duration-500 hover:bg-primary-dark hover:scale-105 ${
         visible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"
       }`}
     >
