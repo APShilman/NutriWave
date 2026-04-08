@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #3A7D5C;
+  --color-primary-dark: #2B5C3F;
+  --color-primary-light: #A8D5BA;
+  --color-accent-warm: #E8F0E4;
+  --color-accent-gold: #C9A96E;
+  --color-bg-page: #F9FAF7;
+  --color-bg-alt: #F2F7F0;
+  --color-text-main: #2D2D2D;
+  --color-text-secondary: #7A7A7A;
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Nunito Sans", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--color-bg-page);
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+/* Section animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.animate-on-scroll.visible .stagger-children > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+.animate-on-scroll.visible .stagger-children > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.animate-on-scroll.visible .stagger-children > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.animate-on-scroll.visible .stagger-children > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.animate-on-scroll.visible .stagger-children > *:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+.animate-on-scroll.visible .stagger-children > *:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+
+/* Floating CTA pulse */
+@keyframes gentle-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(58,125,92,0.3); }
+  50% { box-shadow: 0 4px 30px rgba(58,125,92,0.5); }
+}
+
+.pulse-cta {
+  animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+/* Decorative section number */
+.section-number {
+  position: absolute;
+  top: -10px;
+  right: 40px;
+  font-family: var(--font-heading);
+  font-size: clamp(80px, 10vw, 160px);
+  font-weight: 300;
+  color: var(--color-primary-light);
+  opacity: 0.15;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Modal animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Decorative floating element base */
+.deco {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 767px) {
+  .deco {
+    display: none;
+  }
+}
+
+/* Unified site background — pastel beige-olive */
+.nutri-pattern {
+  background: linear-gradient(180deg, #F5F2EC 0%, #EEF0E6 25%, #F2EFE7 50%, #ECF0E5 75%, #F4F1EA 100%);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Smooth section transitions */
+section {
+  position: relative;
+}
+
+/* Card hover glow effect */
+.card-glow {
+  position: relative;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(168,213,186,0.3), rgba(58,125,92,0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+}
