@@ -72,15 +72,15 @@ function TgIcon({ className }: { className?: string }) {
 /* ── Header shared by both card types ── */
 function ReviewHeader({ name, city }: { name: string; city: string }) {
   return (
-    <div className="flex items-center gap-3 mb-3">
-      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-light to-primary flex items-center justify-center shrink-0">
-        <span className="text-white font-bold text-sm">{name.charAt(0)}</span>
+    <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+      <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-primary-light to-primary flex items-center justify-center shrink-0">
+        <span className="text-white font-bold text-[10px] sm:text-sm">{name.charAt(0)}</span>
       </div>
       <div className="flex-1 min-w-0">
-        <div className="text-sm font-bold text-text-main">{name}</div>
-        <div className="text-[11px] text-text-secondary">{city}</div>
+        <div className="text-xs sm:text-sm font-bold text-text-main">{name}</div>
+        <div className="text-[10px] sm:text-[11px] text-text-secondary">{city}</div>
       </div>
-      <TgIcon className="w-4 h-4 text-[#229ED9] shrink-0" />
+      <TgIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#229ED9] shrink-0" />
     </div>
   );
 }
@@ -88,10 +88,10 @@ function ReviewHeader({ name, city }: { name: string; city: string }) {
 /* ── Text review card ── */
 function TextCard({ review }: { review: TextReview }) {
   return (
-    <div className="bg-white rounded-[20px] p-5 shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(58,125,92,0.10)] transition-shadow duration-300 h-full flex flex-col">
+    <div className="bg-white rounded-xl sm:rounded-[20px] p-3 sm:p-5 shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(58,125,92,0.10)] transition-shadow duration-300 h-full flex flex-col">
       <ReviewHeader name={review.name} city={review.city} />
-      <div className="relative bg-[#EFFFDE] rounded-2xl rounded-tl-sm px-4 py-3 flex-1 flex flex-col justify-between min-h-[220px]">
-        <p className="text-[13.5px] text-text-main leading-[1.65]">{review.text}</p>
+      <div className="relative bg-[#EFFFDE] rounded-xl sm:rounded-2xl rounded-tl-sm px-3 py-2 sm:px-4 sm:py-3 flex-1 flex flex-col justify-between min-h-[160px] sm:min-h-[220px]">
+        <p className="text-xs sm:text-[13.5px] text-text-main leading-relaxed sm:leading-[1.65]">{review.text}</p>
         <div className="flex items-center justify-end gap-1 mt-2">
           <span className="text-[11px] text-text-secondary/60">{review.time}</span>
           <svg className="w-4 h-3 text-[#4FC3F7]" viewBox="0 0 16 11" fill="none">
@@ -115,7 +115,7 @@ function ScreenshotCard({ review }: { review: ScreenshotReview }) {
 
   return (
     <>
-      <div className="bg-white rounded-[20px] p-5 shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(58,125,92,0.10)] transition-shadow duration-300 flex flex-col h-[460px] sm:h-[420px]">
+      <div className="bg-white rounded-xl sm:rounded-[20px] p-3 sm:p-5 shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(58,125,92,0.10)] transition-shadow duration-300 flex flex-col h-[320px] sm:h-[420px]">
         <ReviewHeader name={review.name} city={review.city} />
 
         {/* Images area — fixed height for uniform cards */}
@@ -150,16 +150,16 @@ function ScreenshotCard({ review }: { review: ScreenshotReview }) {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between mt-3 shrink-0">
-          <div className="flex items-center gap-1.5 text-[11px] text-text-secondary">
+        <div className="flex items-center justify-between mt-2 sm:mt-3 shrink-0">
+          <div className="hidden sm:flex items-center gap-1.5 text-[11px] text-text-secondary">
             <TgIcon className="w-3.5 h-3.5 text-[#229ED9]" />
             Скриншот из Telegram
           </div>
           <button
             onClick={() => setLightboxIdx(0)}
-            className="text-[11px] font-semibold text-primary hover:underline"
+            className="text-[10px] sm:text-[11px] font-semibold text-primary hover:underline"
           >
-            Читать полностью &rarr;
+            Читать &rarr;
           </button>
         </div>
       </div>
@@ -287,14 +287,14 @@ export default function Reviews() {
         </div>
 
         {/* Row 1: two text reviews — equal height */}
-        <div className="grid md:grid-cols-2 gap-6 mb-6 stagger-children auto-rows-fr">
+        <div className="grid md:grid-cols-2 gap-3 sm:gap-6 mb-3 sm:mb-6 stagger-children auto-rows-fr">
           {REVIEWS.filter((r): r is TextReview => r.type === "text").map((r, i) => (
             <TextCard key={i} review={r} />
           ))}
         </div>
 
         {/* Row 2: three screenshot reviews — uniform height */}
-        <div className="grid sm:grid-cols-3 gap-6 stagger-children">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 stagger-children">
           {REVIEWS.filter((r): r is ScreenshotReview => r.type === "screenshot").map((r, i) => (
             <ScreenshotCard key={i} review={r} />
           ))}

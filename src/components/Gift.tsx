@@ -100,13 +100,13 @@ export default function Gift() {
         </div>
 
         {/* Guide cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 stagger-children">
           {GUIDES.map((guide, i) => (
             <a
               key={i}
               href={guide.href}
               download
-              className="group bg-white rounded-[20px] overflow-hidden shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(58,125,92,0.12)] hover:-translate-y-2 transition-all duration-300 flex flex-col"
+              className="group bg-white rounded-xl sm:rounded-[20px] overflow-hidden shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(58,125,92,0.12)] hover:-translate-y-2 transition-all duration-300 flex flex-col"
             >
               {/* Cover image */}
               <div
@@ -117,13 +117,13 @@ export default function Gift() {
                   src={guide.cover}
                   alt={guide.title}
                   fill
-                  className="object-contain object-center p-2 group-hover:scale-[1.03] transition-transform duration-500"
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 280px"
+                  className="object-contain object-center p-1 sm:p-2 group-hover:scale-[1.03] transition-transform duration-500"
+                  sizes="(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 280px"
                 />
                 {/* Download overlay */}
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100">
-                    <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100">
+                    <svg className="w-4 h-4 sm:w-6 sm:h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                     </svg>
                   </div>
@@ -131,16 +131,16 @@ export default function Gift() {
               </div>
 
               {/* Info */}
-              <div className="p-5 flex-1 flex flex-col">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center text-primary" style={{ backgroundColor: guide.color }}>
+              <div className="p-3 sm:p-5 flex-1 flex flex-col">
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-1 sm:mb-2">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-md sm:rounded-lg flex items-center justify-center text-primary shrink-0" style={{ backgroundColor: guide.color }}>
                     {guide.icon}
                   </div>
-                  <h3 className="text-sm font-bold text-text-main leading-tight">{guide.title}</h3>
+                  <h3 className="text-xs sm:text-sm font-bold text-text-main leading-tight">{guide.title}</h3>
                 </div>
-                <p className="text-xs text-text-secondary leading-relaxed flex-1">{guide.description}</p>
-                <div className="flex items-center gap-1.5 mt-3 text-xs font-semibold text-primary group-hover:gap-2.5 transition-all">
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <p className="text-[10px] sm:text-xs text-text-secondary leading-relaxed flex-1 hidden sm:block">{guide.description}</p>
+                <div className="flex items-center gap-1 sm:gap-1.5 mt-2 sm:mt-3 text-[10px] sm:text-xs font-semibold text-primary group-hover:gap-2.5 transition-all">
+                  <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
                   </svg>
                   Скачать PDF
