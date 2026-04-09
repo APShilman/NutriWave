@@ -102,10 +102,8 @@ export default function Gift() {
         {/* Guide cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 stagger-children">
           {GUIDES.map((guide, i) => (
-            <a
+            <div
               key={i}
-              href={guide.href}
-              download
               className="group bg-white rounded-xl sm:rounded-[20px] overflow-hidden shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(58,125,92,0.12)] hover:-translate-y-2 transition-all duration-300 flex flex-col"
             >
               {/* Cover image */}
@@ -120,14 +118,6 @@ export default function Gift() {
                   className="object-contain object-center p-1 sm:p-2 group-hover:scale-[1.03] transition-transform duration-500"
                   sizes="(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 280px"
                 />
-                {/* Download overlay */}
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100">
-                    <svg className="w-4 h-4 sm:w-6 sm:h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                    </svg>
-                  </div>
-                </div>
               </div>
 
               {/* Info */}
@@ -139,14 +129,34 @@ export default function Gift() {
                   <h3 className="text-xs sm:text-sm font-bold text-text-main leading-tight">{guide.title}</h3>
                 </div>
                 <p className="text-[10px] sm:text-xs text-text-secondary leading-relaxed flex-1 hidden sm:block">{guide.description}</p>
-                <div className="flex items-center gap-1 sm:gap-1.5 mt-2 sm:mt-3 text-[10px] sm:text-xs font-semibold text-primary group-hover:gap-2.5 transition-all">
-                  <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                  </svg>
-                  Скачать PDF
+
+                {/* Buttons */}
+                <div className="flex flex-col sm:flex-row gap-1.5 sm:gap-2 mt-2 sm:mt-3">
+                  <a
+                    href={guide.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-1 sm:gap-1.5 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-primary text-white text-[10px] sm:text-xs font-semibold hover:bg-primary-dark transition-colors flex-1"
+                  >
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Смотреть
+                  </a>
+                  <a
+                    href={guide.href}
+                    download
+                    className="flex items-center justify-center gap-1 sm:gap-1.5 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg border border-primary text-primary text-[10px] sm:text-xs font-semibold hover:bg-primary/5 transition-colors flex-1"
+                  >
+                    <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                    </svg>
+                    Скачать
+                  </a>
                 </div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
