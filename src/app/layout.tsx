@@ -20,17 +20,23 @@ export const metadata: Metadata = {
   title: "Анна Шильман — клинический нутрициолог, натуропат | Онлайн-консультации",
   description:
     "Клинический и перинатальный нутрициолог. Индивидуальное сопровождение, детокс и кето программы, генетика питания. Научный подход к здоровью.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.svg",
+  },
   openGraph: {
     title: "Анна Шильман — клинический нутрициолог и натуропат",
     description:
       "Клинический и перинатальный нутрициолог. Индивидуальное сопровождение, детокс и кето программы, генетика питания.",
-    url: "https://nutriwave.ru/",
+    url: "https://nutriwave.pro/",
     siteName: "NutriWave",
     locale: "ru_RU",
     type: "website",
   },
   alternates: {
-    canonical: "https://nutriwave.ru/",
+    canonical: "https://nutriwave.pro/",
   },
 };
 
