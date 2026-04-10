@@ -108,7 +108,7 @@ export default function Contacts() {
 
             <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm">
               <a
-                href="https://t.me/nutriwave_anna"
+                href="https://t.me/AnnaNutriWave"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#229ED9] text-white text-sm font-bold uppercase tracking-[0.05em] rounded-full hover:bg-[#1a8abf] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(34,158,217,0.35)] hover:scale-[1.02]"
