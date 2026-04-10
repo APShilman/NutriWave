@@ -119,55 +119,44 @@ export default function Contacts() {
             </a>
           </div>
 
-          {/* Contact form */}
-          <div className="bg-white rounded-[24px] p-5 sm:p-8 shadow-[0_2px_20px_rgba(0,0,0,0.04)]">
-            <h3 className="font-[var(--font-heading)] text-2xl font-semibold text-text-main mb-6">
+          {/* CTA block */}
+          <div className="bg-white rounded-[24px] p-5 sm:p-8 shadow-[0_2px_20px_rgba(0,0,0,0.04)] flex flex-col items-center justify-center text-center">
+            <div className="w-16 h-16 bg-accent-warm rounded-2xl flex items-center justify-center mb-5">
+              <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+              </svg>
+            </div>
+            <h3 className="font-[var(--font-heading)] text-2xl font-semibold text-text-main mb-3">
               Записаться на консультацию
             </h3>
+            <p className="text-text-secondary text-sm mb-8 max-w-sm">
+              Напишите мне в удобный мессенджер — обсудим ваш запрос и подберём формат работы
+            </p>
 
-            <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
-              <div>
-                <label className="block text-sm font-semibold text-text-main mb-1.5">Имя</label>
-                <input
-                  type="text"
-                  placeholder="Ваше имя"
-                  className="w-full px-4 py-3 rounded-xl border border-primary-light/40 bg-bg-page focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all text-text-main placeholder:text-text-secondary/50"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-text-main mb-1.5">
-                  Телефон или Email
-                </label>
-                <input
-                  type="text"
-                  placeholder="+7 (___) ___-__-__ или email"
-                  className="w-full px-4 py-3 rounded-xl border border-primary-light/40 bg-bg-page focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all text-text-main placeholder:text-text-secondary/50"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-text-main mb-1.5">
-                  Краткий запрос
-                </label>
-                <textarea
-                  placeholder="Опишите вашу ситуацию или вопрос"
-                  rows={3}
-                  className="w-full px-4 py-3 rounded-xl border border-primary-light/40 bg-bg-page focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all text-text-main placeholder:text-text-secondary/50 resize-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-4 bg-primary text-white text-sm font-bold uppercase tracking-[0.05em] rounded-full hover:bg-primary-dark transition-all duration-300 hover:shadow-[0_4px_16px_rgba(58,125,92,0.25)] hover:scale-[1.02] mt-2"
+            <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm">
+              <a
+                href="https://t.me/NutriWav"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#229ED9] text-white text-sm font-bold uppercase tracking-[0.05em] rounded-full hover:bg-[#1a8abf] transition-all duration-300 hover:shadow-[0_4px_16px_rgba(34,158,217,0.35)] hover:scale-[1.02]"
               >
-                Отправить заявку
-              </button>
-
-              <p className="text-xs text-text-secondary text-center">
-                Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
-              </p>
-            </form>
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+                Telegram
+              </a>
+              <a
+                href="https://max.ru/u/f9LHodD0cOJ6ZTF07nuXLgvB_St-AbL9e3gubtKmmi8oNiZPPjOzBS82dJc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-[#4cf] via-[#53e] to-[#93d] text-white text-sm font-bold uppercase tracking-[0.05em] rounded-full hover:opacity-90 transition-all duration-300 hover:shadow-[0_4px_16px_rgba(85,51,238,0.35)] hover:scale-[1.02]"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 1000 1000" fill="currentColor">
+                  <path fillRule="evenodd" d="M508.211 878.328c-75.007 0-109.864-10.95-170.453-54.75-38.325 49.275-159.686 87.783-164.979 21.9 0-49.456-10.95-91.248-23.36-136.873-14.782-56.21-31.572-118.807-31.572-209.508 0-216.626 177.754-379.597 388.357-379.597 210.785 0 375.947 171.001 375.947 381.604.707 207.346-166.595 376.118-373.94 377.224m3.103-571.585c-102.564-5.292-182.499 65.7-200.201 177.024-14.6 92.162 11.315 204.398 33.397 210.238 10.585 2.555 37.23-18.98 53.837-35.587a189.8 189.8 0 0 0 92.71 33.032c106.273 5.112 197.08-75.794 204.215-181.95 4.154-106.382-77.67-196.486-183.958-202.574Z" clipRule="evenodd"/>
+                </svg>
+                MAX
+              </a>
+            </div>
           </div>
         </div>
       </div>
