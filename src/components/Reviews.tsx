@@ -329,29 +329,45 @@ function ScreenshotCard({ review, onOpen }: { review: ScreenshotReview; onOpen: 
   );
 }
 
-/* ── Marquee ticker ── */
+/* ── Marquee ticker with drag/swipe ── */
 function ReviewMarquee() {
   const trackRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(false);
   const offsetRef = useRef(0);
   const rafRef = useRef<number>(0);
   const lastTimeRef = useRef<number>(0);
-  const speedPx = 0.02; // much slower: ~20px/s
+  const speedPx = 0.02; // ~20px/s auto-scroll
 
-  // Lightbox state — lifted here so marquee can pause
+  // Drag state
+  const isDragging = useRef(false);
+  const dragStartX = useRef(0);
+  const dragStartOffset = useRef(0);
+  const dragDistance = useRef(0);
+  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Lightbox state
   const [openReview, setOpenReview] = useState<{ review: Review; index: number } | null>(null);
 
   const openLightbox = useCallback((review: Review, index: number) => {
+    // Only open if not a drag gesture
+    if (Math.abs(dragDistance.current) > 5) return;
     pausedRef.current = true;
     setOpenReview({ review, index });
   }, []);
 
   const closeLightbox = useCallback(() => {
     setOpenReview(null);
-    // Small delay before resuming so click doesn't re-trigger
-    setTimeout(() => {
-      pausedRef.current = false;
-    }, 300);
+    setTimeout(() => { pausedRef.current = false; }, 300);
+  }, []);
+
+  // Wrap offset to keep it within bounds
+  const wrapOffset = useCallback(() => {
+    if (!trackRef.current) return;
+    const halfWidth = trackRef.current.scrollWidth / 2;
+    if (halfWidth > 0) {
+      while (offsetRef.current >= halfWidth) offsetRef.current -= halfWidth;
+      while (offsetRef.current < 0) offsetRef.current += halfWidth;
+    }
   }, []);
 
   const animate = useCallback(
@@ -362,22 +378,17 @@ function ReviewMarquee() {
       }
       if (lastTimeRef.current === 0) lastTimeRef.current = time;
 
-      if (!pausedRef.current) {
+      if (!pausedRef.current && !isDragging.current) {
         const dt = time - lastTimeRef.current;
         offsetRef.current += dt * speedPx;
-
-        const halfWidth = trackRef.current.scrollWidth / 2;
-        if (halfWidth > 0 && offsetRef.current >= halfWidth) {
-          offsetRef.current -= halfWidth;
-        }
-
-        trackRef.current.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
+        wrapOffset();
       }
 
+      trackRef.current.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
       lastTimeRef.current = time;
       rafRef.current = requestAnimationFrame(animate);
     },
-    []
+    [wrapOffset]
   );
 
   useEffect(() => {
@@ -385,43 +396,88 @@ function ReviewMarquee() {
     return () => cancelAnimationFrame(rafRef.current);
   }, [animate]);
 
-  const handleMouseEnter = useCallback(() => {
-    if (!openReview) pausedRef.current = true;
+  // Schedule auto-resume after user interaction
+  const scheduleResume = useCallback((delay = 3000) => {
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+    resumeTimer.current = setTimeout(() => {
+      if (!openReview) pausedRef.current = false;
+    }, delay);
   }, [openReview]);
 
-  const handleMouseLeave = useCallback(() => {
-    if (!openReview) pausedRef.current = false;
-  }, [openReview]);
+  // ── Mouse drag ──
+  const onMouseDown = useCallback((e: React.MouseEvent) => {
+    isDragging.current = true;
+    dragStartX.current = e.clientX;
+    dragStartOffset.current = offsetRef.current;
+    dragDistance.current = 0;
+    pausedRef.current = true;
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+  }, []);
 
-  const handleTouchStart = useCallback(() => {
-    if (!openReview) pausedRef.current = true;
-  }, [openReview]);
+  const onMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging.current) return;
+    const dx = e.clientX - dragStartX.current;
+    dragDistance.current = dx;
+    offsetRef.current = dragStartOffset.current - dx;
+    wrapOffset();
+  }, [wrapOffset]);
 
-  const handleTouchEnd = useCallback(() => {
-    if (!openReview) {
-      setTimeout(() => {
-        pausedRef.current = false;
-      }, 4000);
+  const onMouseUp = useCallback(() => {
+    isDragging.current = false;
+    scheduleResume();
+  }, [scheduleResume]);
+
+  const onMouseLeave = useCallback(() => {
+    if (isDragging.current) {
+      isDragging.current = false;
     }
-  }, [openReview]);
+    scheduleResume(1500);
+  }, [scheduleResume]);
+
+  // ── Touch drag ──
+  const onTouchStart = useCallback((e: React.TouchEvent) => {
+    isDragging.current = true;
+    dragStartX.current = e.touches[0].clientX;
+    dragStartOffset.current = offsetRef.current;
+    dragDistance.current = 0;
+    pausedRef.current = true;
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+  }, []);
+
+  const onTouchMove = useCallback((e: React.TouchEvent) => {
+    if (!isDragging.current) return;
+    const dx = e.touches[0].clientX - dragStartX.current;
+    dragDistance.current = dx;
+    offsetRef.current = dragStartOffset.current - dx;
+    wrapOffset();
+  }, [wrapOffset]);
+
+  const onTouchEnd = useCallback(() => {
+    isDragging.current = false;
+    scheduleResume(4000);
+  }, [scheduleResume]);
 
   const allReviews = [...REVIEWS, ...REVIEWS];
 
   return (
     <>
       <div
-        className="relative overflow-hidden"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
+        className="relative overflow-hidden select-none"
+        style={{ cursor: isDragging.current ? "grabbing" : "grab" }}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        onMouseLeave={onMouseLeave}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
       >
-        {/* Fade edges — matching nutri-pattern background */}
+        {/* Fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-20 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, #EEF0E6, transparent)" }} />
         <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-20 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, #ECF0E5, transparent)" }} />
 
         {/* Track */}
-        <div ref={trackRef} className="flex gap-4 sm:gap-6 items-stretch will-change-transform py-4 px-2">
+        <div ref={trackRef} className="flex gap-4 sm:gap-6 items-stretch will-change-transform py-4 px-2 pointer-events-auto">
           {allReviews.map((review, i) => (
             <div key={i} className="shrink-0 flex">
               {review.type === "text" ? (
