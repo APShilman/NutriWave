@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { useScrollAnimation } from "./useScrollAnimation";
-import { CitrusSliceSVG, LeafSVG, OrganicBlob } from "./DecorativeElements";
+import { LeafSVG } from "./DecorativeElements";
 
 type TextReview = {
   type: "text";
@@ -85,205 +85,299 @@ function ReviewHeader({ name, city }: { name: string; city: string }) {
   );
 }
 
-/* ── Text review card ── */
-function TextCard({ review }: { review: TextReview }) {
+/* ── Text review modal ── */
+function TextLightbox({
+  review,
+  onClose,
+}: {
+  review: TextReview;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handler);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handler);
+    };
+  }, [onClose]);
+
   return (
-    <div className="bg-white rounded-2xl p-4 shadow-[0_2px_20px_rgba(0,0,0,0.04)] flex flex-col w-[300px] sm:w-[360px] shrink-0 h-full">
-      <ReviewHeader name={review.name} city={review.city} />
-      <div className="relative bg-[#EFFFDE] rounded-2xl rounded-tl-sm px-4 py-3 flex-1 flex flex-col justify-between">
-        <p className="text-[13px] text-text-main leading-[1.6] line-clamp-[8]">{review.text}</p>
-        <div className="flex items-center justify-end gap-1 mt-2">
-          <span className="text-[11px] text-text-secondary/60">{review.time}</span>
-          <svg className="w-4 h-3 text-[#4FC3F7]" viewBox="0 0 16 11" fill="none">
-            <path d="M11.07 0.65L4.98 6.73L3.91 5.66L2.5 7.07L4.98 9.55L12.48 2.06L11.07 0.65Z" fill="currentColor" />
-            <path d="M14.07 0.65L7.98 6.73L7.49 6.24L6.08 7.65L7.98 9.55L15.48 2.06L14.07 0.65Z" fill="currentColor" />
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+      <div
+        className="relative z-10 w-full max-w-[440px] bg-white rounded-2xl p-5 sm:p-6 shadow-2xl animate-[modalIn_0.3s_ease-out]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close */}
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-gray-100 hover:bg-red-100 flex items-center justify-center transition-colors"
+        >
+          <svg className="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
-        </div>
-        <div className="absolute -bottom-3 left-3 flex items-center gap-1 bg-primary/90 text-white text-[11px] font-semibold px-2 py-0.5 rounded-full shadow-sm">
-          <span>❤️</span>
+        </button>
+
+        <ReviewHeader name={review.name} city={review.city} />
+        <div className="relative bg-[#EFFFDE] rounded-2xl rounded-tl-sm px-4 py-3">
+          <p className="text-[14px] text-text-main leading-[1.7]">{review.text}</p>
+          <div className="flex items-center justify-end gap-1 mt-3">
+            <span className="text-[11px] text-text-secondary/60">{review.time}</span>
+            <svg className="w-4 h-3 text-[#4FC3F7]" viewBox="0 0 16 11" fill="none">
+              <path d="M11.07 0.65L4.98 6.73L3.91 5.66L2.5 7.07L4.98 9.55L12.48 2.06L11.07 0.65Z" fill="currentColor" />
+              <path d="M14.07 0.65L7.98 6.73L7.49 6.24L6.08 7.65L7.98 9.55L15.48 2.06L14.07 0.65Z" fill="currentColor" />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
+/* ── Screenshot lightbox ── */
+function ScreenshotLightbox({
+  review,
+  onClose,
+}: {
+  review: ScreenshotReview;
+  onClose: () => void;
+}) {
+  const [idx, setIdx] = useState(0);
+  const multi = review.images.length > 1;
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") setIdx((prev) => (prev + 1) % review.images.length);
+      if (e.key === "ArrowLeft") setIdx((prev) => (prev - 1 + review.images.length) % review.images.length);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handler);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handler);
+    };
+  }, [onClose, review.images.length]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center"
+      onClick={onClose}
+    >
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+      <div
+        className="relative z-10 flex flex-col items-center w-[95vw] max-w-[460px] animate-[modalIn_0.3s_ease-out]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Top bar */}
+        <div className="w-full flex items-center justify-between mb-3 px-1">
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary-light to-primary flex items-center justify-center">
+              <span className="text-white font-bold text-xs">{review.name.charAt(0)}</span>
+            </div>
+            <span className="text-white/90 text-sm font-medium">{review.name}, {review.city}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            {multi && (
+              <span className="text-white/50 text-xs font-semibold tabular-nums">
+                {idx + 1} / {review.images.length}
+              </span>
+            )}
+            <button
+              onClick={onClose}
+              className="w-8 h-8 rounded-full bg-white/10 hover:bg-red-500/80 flex items-center justify-center transition-colors"
+            >
+              <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Image */}
+        <div className="relative w-full">
+          <div className="max-h-[80vh] rounded-2xl overflow-y-auto overflow-x-hidden shadow-[0_20px_80px_rgba(0,0,0,0.4)] bg-white">
+            <Image
+              key={review.images[idx]}
+              src={review.images[idx]}
+              alt={`Отзыв ${review.name}`}
+              width={460}
+              height={820}
+              className="w-full h-auto"
+              sizes="460px"
+              priority
+            />
+          </div>
+
+          {multi && (
+            <>
+              <button
+                onClick={() => setIdx((idx - 1 + review.images.length) % review.images.length)}
+                className="absolute left-2 sm:-left-14 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 hover:bg-primary backdrop-blur-sm flex items-center justify-center transition-all"
+              >
+                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+              </button>
+              <button
+                onClick={() => setIdx((idx + 1) % review.images.length)}
+                className="absolute right-2 sm:-right-14 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 hover:bg-primary backdrop-blur-sm flex items-center justify-center transition-all"
+              >
+                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </button>
+            </>
+          )}
+        </div>
+
+        {multi && (
+          <div className="flex items-center gap-2 mt-3">
+            {review.images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIdx(i)}
+                className={`h-1.5 rounded-full transition-all ${i === idx ? "w-6 bg-primary" : "w-1.5 bg-white/40"}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ── Text review card ── */
+function TextCard({ review, onOpen }: { review: TextReview; onOpen: () => void }) {
+  return (
+    <button
+      onClick={onOpen}
+      className="bg-white rounded-2xl p-4 shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(58,125,92,0.10)] transition-all duration-300 flex flex-col w-[300px] sm:w-[360px] shrink-0 cursor-pointer text-left"
+    >
+      <ReviewHeader name={review.name} city={review.city} />
+      <div className="relative bg-[#EFFFDE] rounded-2xl rounded-tl-sm px-4 py-3 flex-1 flex flex-col justify-between">
+        <p className="text-[13px] text-text-main leading-[1.6] line-clamp-6">{review.text}</p>
+        <div className="flex items-center justify-between mt-2">
+          <span className="text-[11px] text-primary font-semibold">Читать полностью</span>
+          <div className="flex items-center gap-1">
+            <span className="text-[11px] text-text-secondary/60">{review.time}</span>
+            <svg className="w-4 h-3 text-[#4FC3F7]" viewBox="0 0 16 11" fill="none">
+              <path d="M11.07 0.65L4.98 6.73L3.91 5.66L2.5 7.07L4.98 9.55L12.48 2.06L11.07 0.65Z" fill="currentColor" />
+              <path d="M14.07 0.65L7.98 6.73L7.49 6.24L6.08 7.65L7.98 9.55L15.48 2.06L14.07 0.65Z" fill="currentColor" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </button>
+  );
+}
+
 /* ── Screenshot review card ── */
-function ScreenshotCard({ review }: { review: ScreenshotReview }) {
-  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+function ScreenshotCard({ review, onOpen }: { review: ScreenshotReview; onOpen: () => void }) {
   const multi = review.images.length > 1;
 
   return (
-    <>
-      <div className="bg-white rounded-2xl p-4 shadow-[0_2px_20px_rgba(0,0,0,0.04)] flex flex-col w-[240px] sm:w-[280px] shrink-0 h-full">
-        <ReviewHeader name={review.name} city={review.city} />
+    <button
+      onClick={onOpen}
+      className="bg-white rounded-2xl p-4 shadow-[0_2px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_32px_rgba(58,125,92,0.10)] transition-all duration-300 flex flex-col w-[240px] sm:w-[280px] shrink-0 cursor-pointer text-left"
+    >
+      <ReviewHeader name={review.name} city={review.city} />
 
-        <div className={`flex-1 min-h-0 ${multi ? "flex gap-1.5" : ""}`}>
-          {review.images.map((src, i) => (
-            <button
-              key={src}
-              onClick={(e) => {
-                e.stopPropagation();
-                setLightboxIdx(i);
-              }}
-              className={`group/img relative rounded-xl overflow-hidden bg-[#EFFFDE] cursor-zoom-in h-full ${multi ? "flex-1" : "w-full"
-                }`}
-            >
-              <Image
-                src={src}
-                alt={`Отзыв ${review.name}`}
-                fill
-                className="object-cover object-top group-hover/img:scale-[1.03] transition-transform duration-300"
-                sizes={multi ? "100px" : "260px"}
-              />
-              <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white/80 to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center bg-primary/0 group-hover/img:bg-primary/5 transition-colors">
-                <div className="w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity shadow-lg">
-                  <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
-                  </svg>
-                </div>
-              </div>
-            </button>
-          ))}
-        </div>
-
-        <div className="flex items-center justify-between mt-2.5 shrink-0">
-          <div className="flex items-center gap-1.5 text-[11px] text-text-secondary">
-            <TgIcon className="w-3.5 h-3.5 text-[#229ED9]" />
-            Telegram
-          </div>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setLightboxIdx(0);
-            }}
-            className="text-[11px] font-semibold text-primary hover:underline"
+      <div className={`flex-1 min-h-0 relative rounded-xl overflow-hidden ${multi ? "flex gap-1.5" : ""}`}>
+        {review.images.slice(0, multi ? 3 : 1).map((src) => (
+          <div
+            key={src}
+            className={`relative bg-[#EFFFDE] h-full ${multi ? "flex-1" : "w-full"}`}
           >
-            Читать &rarr;
-          </button>
+            <Image
+              src={src}
+              alt={`Отзыв ${review.name}`}
+              fill
+              className="object-cover object-top"
+              sizes={multi ? "100px" : "260px"}
+            />
+          </div>
+        ))}
+        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white/90 to-transparent" />
+        {/* Open hint */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity bg-primary/5">
+          <div className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
+            <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+            </svg>
+          </div>
         </div>
       </div>
 
-      {/* ── Lightbox ── */}
-      {lightboxIdx !== null && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center"
-          onClick={() => setLightboxIdx(null)}
-        >
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-md animate-[fadeIn_0.2s_ease-out]" />
-          <div
-            className="relative z-10 flex flex-col items-center w-[95vw] max-w-[460px] animate-[modalIn_0.3s_ease-out]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="w-full flex items-center justify-between mb-3 px-1">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-primary-light to-primary flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">{review.name.charAt(0)}</span>
-                </div>
-                <span className="text-white/90 text-sm font-medium">{review.name}, {review.city}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                {multi && (
-                  <span className="text-white/50 text-xs font-semibold tabular-nums">
-                    {lightboxIdx + 1} / {review.images.length}
-                  </span>
-                )}
-                <button
-                  onClick={() => setLightboxIdx(null)}
-                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-red-500/80 flex items-center justify-center transition-colors"
-                >
-                  <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div className="relative w-full">
-              <div className="max-h-[80vh] rounded-2xl overflow-y-auto overflow-x-hidden shadow-[0_20px_80px_rgba(0,0,0,0.4)] bg-white">
-                <Image
-                  key={review.images[lightboxIdx]}
-                  src={review.images[lightboxIdx]}
-                  alt={`Отзыв ${review.name}`}
-                  width={460}
-                  height={820}
-                  className="w-full h-auto"
-                  sizes="460px"
-                  priority
-                />
-              </div>
-
-              {multi && (
-                <>
-                  <button
-                    onClick={() => setLightboxIdx((lightboxIdx - 1 + review.images.length) % review.images.length)}
-                    className="absolute left-2 sm:-left-14 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 hover:bg-primary backdrop-blur-sm flex items-center justify-center transition-all"
-                  >
-                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={() => setLightboxIdx((lightboxIdx + 1) % review.images.length)}
-                    className="absolute right-2 sm:-right-14 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 hover:bg-primary backdrop-blur-sm flex items-center justify-center transition-all"
-                  >
-                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                    </svg>
-                  </button>
-                </>
-              )}
-            </div>
-
-            {multi && (
-              <div className="flex items-center gap-2 mt-3">
-                {review.images.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setLightboxIdx(i)}
-                    className={`h-1.5 rounded-full transition-all ${i === lightboxIdx ? "w-6 bg-primary" : "w-1.5 bg-white/40"
-                      }`}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
+      <div className="flex items-center justify-between mt-2.5 shrink-0">
+        <div className="flex items-center gap-1.5 text-[11px] text-text-secondary">
+          <TgIcon className="w-3.5 h-3.5 text-[#229ED9]" />
+          Telegram
         </div>
-      )}
-    </>
+        <span className="text-[11px] font-semibold text-primary">
+          Открыть &rarr;
+        </span>
+      </div>
+    </button>
   );
 }
 
 /* ── Marquee ticker ── */
 function ReviewMarquee() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
+  const pausedRef = useRef(false);
   const offsetRef = useRef(0);
   const rafRef = useRef<number>(0);
   const lastTimeRef = useRef<number>(0);
-  const speedPx = 0.4; // px per ms (~40px/s)
+  const speedPx = 0.02; // much slower: ~20px/s
+
+  // Lightbox state — lifted here so marquee can pause
+  const [openReview, setOpenReview] = useState<{ review: Review; index: number } | null>(null);
+
+  const openLightbox = useCallback((review: Review, index: number) => {
+    pausedRef.current = true;
+    setOpenReview({ review, index });
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setOpenReview(null);
+    // Small delay before resuming so click doesn't re-trigger
+    setTimeout(() => {
+      pausedRef.current = false;
+    }, 300);
+  }, []);
 
   const animate = useCallback(
     (time: number) => {
-      if (!trackRef.current) return;
+      if (!trackRef.current) {
+        rafRef.current = requestAnimationFrame(animate);
+        return;
+      }
       if (lastTimeRef.current === 0) lastTimeRef.current = time;
 
-      if (!paused) {
+      if (!pausedRef.current) {
         const dt = time - lastTimeRef.current;
         offsetRef.current += dt * speedPx;
 
         const halfWidth = trackRef.current.scrollWidth / 2;
-        if (offsetRef.current >= halfWidth) {
+        if (halfWidth > 0 && offsetRef.current >= halfWidth) {
           offsetRef.current -= halfWidth;
         }
 
-        trackRef.current.style.transform = `translateX(-${offsetRef.current}px)`;
+        trackRef.current.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
       }
 
       lastTimeRef.current = time;
       rafRef.current = requestAnimationFrame(animate);
     },
-    [paused]
+    []
   );
 
   useEffect(() => {
@@ -291,34 +385,63 @@ function ReviewMarquee() {
     return () => cancelAnimationFrame(rafRef.current);
   }, [animate]);
 
-  return (
-    <div
-      className="relative overflow-hidden"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onTouchStart={() => setPaused(true)}
-      onTouchEnd={() => {
-        // Resume after a short delay so tap-to-open lightbox works
-        setTimeout(() => setPaused(false), 3000);
-      }}
-    >
-      {/* Fade edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-[#F5F2EC] to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-[#F5F2EC] to-transparent z-10 pointer-events-none" />
+  const handleMouseEnter = useCallback(() => {
+    if (!openReview) pausedRef.current = true;
+  }, [openReview]);
 
-      {/* Track: reviews duplicated for seamless loop */}
-      <div ref={trackRef} className="flex gap-4 sm:gap-6 items-stretch will-change-transform py-4">
-        {[...REVIEWS, ...REVIEWS].map((review, i) => (
-          <div key={i} className="shrink-0">
-            {review.type === "text" ? (
-              <TextCard review={review} />
-            ) : (
-              <ScreenshotCard review={review} />
-            )}
-          </div>
-        ))}
+  const handleMouseLeave = useCallback(() => {
+    if (!openReview) pausedRef.current = false;
+  }, [openReview]);
+
+  const handleTouchStart = useCallback(() => {
+    if (!openReview) pausedRef.current = true;
+  }, [openReview]);
+
+  const handleTouchEnd = useCallback(() => {
+    if (!openReview) {
+      setTimeout(() => {
+        pausedRef.current = false;
+      }, 4000);
+    }
+  }, [openReview]);
+
+  const allReviews = [...REVIEWS, ...REVIEWS];
+
+  return (
+    <>
+      <div
+        className="relative overflow-hidden"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        {/* Fade edges — matching nutri-pattern background */}
+        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-20 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, #EEF0E6, transparent)" }} />
+        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-20 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, #ECF0E5, transparent)" }} />
+
+        {/* Track */}
+        <div ref={trackRef} className="flex gap-4 sm:gap-6 items-stretch will-change-transform py-4 px-2">
+          {allReviews.map((review, i) => (
+            <div key={i} className="shrink-0 flex">
+              {review.type === "text" ? (
+                <TextCard review={review} onOpen={() => openLightbox(review, i)} />
+              ) : (
+                <ScreenshotCard review={review} onOpen={() => openLightbox(review, i)} />
+              )}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+
+      {/* Lightbox portal */}
+      {openReview && openReview.review.type === "text" && (
+        <TextLightbox review={openReview.review} onClose={closeLightbox} />
+      )}
+      {openReview && openReview.review.type === "screenshot" && (
+        <ScreenshotLightbox review={openReview.review} onClose={closeLightbox} />
+      )}
+    </>
   );
 }
 
@@ -335,10 +458,7 @@ export default function Reviews() {
       <span className="section-number">07</span>
 
       {/* Decorative elements */}
-      <CitrusSliceSVG className="deco w-[120px] top-16 left-12 rotate-[-20deg] text-[#AED581] opacity-[0.12]" />
-      <LeafSVG className="deco w-[100px] bottom-20 right-10 text-primary opacity-[0.10]" />
-      <OrganicBlob className="deco w-[350px] h-[350px] bottom-[-8%] left-[-8%] text-[#E8F5E9] opacity-[0.06]" variant={1} />
-      <div className="deco w-[250px] h-[250px] rounded-full bg-[#FFF8E1]/25 blur-[80px] top-[10%] right-[5%]" />
+      <LeafSVG className="deco w-[100px] bottom-20 right-10 text-primary opacity-[0.08]" />
 
       <div ref={ref} className="animate-on-scroll">
         <div className="text-center mb-10 md:mb-16 px-6">
