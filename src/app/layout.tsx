@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -16,27 +16,80 @@ const nunito = Nunito_Sans({
   display: "swap",
 });
 
+const SITE_URL = "https://nutriwave.pro";
+const TITLE =
+  "Анна Шильман — клинический нутрициолог, натуропат | Онлайн-консультации";
+const DESCRIPTION =
+  "Клинический и перинатальный нутрициолог, натуропат. Индивидуальные онлайн-консультации, детокс и кето программы, генетика питания, нутрицевтическая поддержка. Научный подход к здоровью.";
+
+export const viewport: Viewport = {
+  themeColor: "#3A7D5C",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "Анна Шильман — клинический нутрициолог, натуропат | Онлайн-консультации",
-  description:
-    "Клинический и перинатальный нутрициолог. Индивидуальное сопровождение, детокс и кето программы, генетика питания. Научный подход к здоровью.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: "%s | NutriWave",
+  },
+  description: DESCRIPTION,
+  applicationName: "NutriWave",
+  authors: [{ name: "Анна Шильман", url: SITE_URL }],
+  creator: "Анна Шильман",
+  publisher: "NutriWave",
+  keywords: [
+    "нутрициолог",
+    "клинический нутрициолог",
+    "перинатальный нутрициолог",
+    "натуропат",
+    "консультация нутрициолога",
+    "онлайн нутрициолог",
+    "генетика питания",
+    "нутрицевтика",
+    "детокс программа",
+    "кето диета",
+    "Анна Шильман",
+    "NutriWave",
+  ],
+  category: "health",
   icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
     apple: "/apple-touch-icon.svg",
   },
-  openGraph: {
-    title: "Анна Шильман — клинический нутрициолог и натуропат",
-    description:
-      "Клинический и перинатальный нутрициолог. Индивидуальное сопровождение, детокс и кето программы, генетика питания.",
-    url: "https://nutriwave.pro/",
-    siteName: "NutriWave",
-    locale: "ru_RU",
-    type: "website",
-  },
   alternates: {
-    canonical: "https://nutriwave.pro/",
+    canonical: "/",
+  },
+  manifest: "/manifest.webmanifest",
+  openGraph: {
+    type: "website",
+    siteName: "NutriWave",
+    url: "/",
+    locale: "ru_RU",
+    title: "Анна Шильман — клинический нутрициолог и натуропат",
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Анна Шильман — клинический нутрициолог и натуропат",
+    description: DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
   },
 };
 

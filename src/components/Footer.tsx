@@ -54,10 +54,10 @@ export default function Footer() {
               <a href="tel:+79222333844" className="hover:text-primary-light transition-colors">
                 +7 (922) 233-38-44
               </a>
-              <a href="https://t.me/nutriwave" target="_blank" rel="noopener noreferrer" className="hover:text-primary-light transition-colors">
+              <a href="https://t.me/NutriWav" target="_blank" rel="noopener noreferrer" className="hover:text-primary-light transition-colors">
                 Telegram
               </a>
-              <a href="https://vk.com/nutriwave" target="_blank" rel="noopener noreferrer" className="hover:text-primary-light transition-colors">
+              <a href="https://vk.com/club236057383" target="_blank" rel="noopener noreferrer" className="hover:text-primary-light transition-colors">
                 ВКонтакте
               </a>
             </div>
@@ -68,7 +68,10 @@ export default function Footer() {
           <p className="text-xs">
             &copy; {new Date().getFullYear()} NutriWave. Все права защищены.
           </p>
-          <a href="#" className="text-xs hover:text-primary-light transition-colors">
+          <a
+            href="/privacy"
+            className="text-xs hover:text-primary-light transition-colors"
+          >
             Политика конфиденциальности
           </a>
         </div>

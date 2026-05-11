@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { CitrusSliceSVG, SmallLeavesSVG, AvocadoHalfSVG, BroccoliSVG, MintLeafSVG, OrganicBlob } from "./DecorativeElements";
 
 export default function Hero() {
   return (

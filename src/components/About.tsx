@@ -93,7 +93,7 @@ export default function About() {
             </div>
             {/* Telegram badge */}
             <a
-              href="https://t.me/nutriwave"
+              href="https://t.me/NutriWav"
               target="_blank"
               rel="noopener noreferrer"
               className="absolute -bottom-4 right-4 lg:right-0 bg-white rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] px-5 py-3 flex items-center gap-3 hover:shadow-[0_8px_32px_rgba(58,125,92,0.12)] transition-shadow group"
