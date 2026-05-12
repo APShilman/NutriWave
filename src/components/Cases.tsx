@@ -112,7 +112,7 @@ export default function Cases() {
                 {"photo" in c && c.photo ? (
                   <Image
                     src={c.photo}
-                    alt={`${c.initials} — результат`}
+                    alt={`Кейс ${c.initials}: ${c.result}`}
                     fill
                     className="object-cover"
                     style={{ objectPosition: c.photoPosition || "center" }}

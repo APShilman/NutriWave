@@ -121,6 +121,16 @@ const jsonLd = {
       },
     },
     {
+      "@type": "AggregateRating",
+      "@id": `${SITE_URL}/#rating`,
+      itemReviewed: { "@id": `${SITE_URL}/#consultation` },
+      ratingValue: 5,
+      bestRating: 5,
+      worstRating: 1,
+      ratingCount: 5,
+      reviewCount: 5,
+    },
+    {
       "@type": "Review",
       "@id": `${SITE_URL}/#review-maria`,
       itemReviewed: { "@id": `${SITE_URL}/#consultation` },

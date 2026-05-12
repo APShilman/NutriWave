@@ -113,7 +113,7 @@ export default function Gift() {
               >
                 <Image
                   src={guide.cover}
-                  alt={guide.title}
+                  alt={`Обложка бесплатного гайда «${guide.title}» от нутрициолога`}
                   fill
                   className="object-contain object-center p-1 sm:p-2 group-hover:scale-[1.03] transition-transform duration-500"
                   sizes="(max-width: 640px) 45vw, (max-width: 1024px) 25vw, 280px"

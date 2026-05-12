@@ -75,7 +75,7 @@ export default function Hero() {
           <div className="relative w-[320px] h-[420px] sm:w-[380px] sm:h-[500px] rounded-[32px] overflow-hidden shadow-[0_20px_60px_rgba(58,125,92,0.15)]">
             <Image
               src="/images/photos/anna-hero.webp"
-              alt="Анна Шильман — клинический нутрициолог"
+              alt="Клинический нутрициолог Анна Шильман — профессиональный портрет"
               fill
               className="object-cover"
               priority

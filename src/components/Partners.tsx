@@ -27,7 +27,7 @@ const PARTNERS: {
     benefit: "Для тебя 15 000 бонусов при регистрации (1 бонус = 1 рубль)",
     cta: "Зарегистрироваться",
     href: "https://hellodoc.app/s/pn9yh/",
-    logos: [{ src: "/images/partners/hellodoc.webp", alt: "Hello,Doc" }],
+    logos: [{ src: "/images/partners/hellodoc.webp", alt: "Логотип Hello,Doc — сервис лабораторных анализов" }],
   },
   {
     name: "MyGenetics",
@@ -36,7 +36,7 @@ const PARTNERS: {
     benefit: "Промокод NutriWave — скидка на исследование",
     cta: "Пройти бесплатный опрос",
     href: "https://mygenetics.ru/quiz/?coupon=NutriWave",
-    logos: [{ src: "/images/partners/mygenetics.webp", alt: "MyGenetics" }],
+    logos: [{ src: "/images/partners/mygenetics.webp", alt: "Логотип MyGenetics — генетические исследования питания" }],
   },
   {
     name: "Польза & Fitness Formula",
@@ -49,8 +49,8 @@ const PARTNERS: {
       { name: "Fitness Formula", address: "г. Челябинск", mapUrl: "https://2gis.ru/chelyabinsk/geo/70000001063421690" },
     ],
     logos: [
-      { src: "/images/partners/polza.webp", alt: "Польза" },
-      { src: "/images/partners/fitness-formula.webp", alt: "Fitness Formula" },
+      { src: "/images/partners/polza.webp", alt: "Логотип магазина «Польза» — здоровое питание в Челябинске" },
+      { src: "/images/partners/fitness-formula.webp", alt: "Логотип Fitness Formula — фитнес-магазин в Челябинске" },
     ],
   },
   {
@@ -60,7 +60,7 @@ const PARTNERS: {
     benefit: "Регистрация в партнерской программе",
     cta: "Зарегистрироваться",
     href: "https://aur-ora.com/auth/registration/672848541553/",
-    logos: [{ src: "/images/partners/aurora.webp", alt: "Aurora" }],
+    logos: [{ src: "/images/partners/aurora.webp", alt: "Логотип Aurora — российские нутрицевтики и витамины" }],
   },
 ];
 

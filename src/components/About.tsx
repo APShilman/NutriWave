@@ -85,7 +85,7 @@ export default function About() {
             <div className="w-full max-w-[280px] sm:max-w-[400px] mx-auto aspect-[3/4] rounded-[24px] overflow-hidden shadow-[0_8px_40px_rgba(58,125,92,0.1)]">
               <Image
                 src="/images/photos/anna-about.webp"
-                alt="Анна Шильман — нутрициолог"
+                alt="Нутрициолог Анна Шильман — о себе и своём подходе к здоровому питанию"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 400px"

@@ -207,7 +207,7 @@ function ScreenshotLightbox({
             <Image
               key={review.images[idx]}
               src={review.images[idx]}
-              alt={`Отзыв ${review.name}`}
+              alt={`Скриншот отзыва клиента ${review.name} из ${review.city} о консультации нутрициолога`}
               width={460}
               height={820}
               className="w-full h-auto"
@@ -298,7 +298,7 @@ function ScreenshotCard({ review, onOpen }: { review: ScreenshotReview; onOpen: 
           >
             <Image
               src={src}
-              alt={`Отзыв ${review.name}`}
+              alt={`Отзыв ${review.name} из ${review.city} о работе с нутрициологом Анной Шильман`}
               fill
               className="object-cover object-top"
               sizes={multi ? "100px" : "260px"}
