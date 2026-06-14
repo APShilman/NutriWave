@@ -8,6 +8,18 @@ const PHOTOS: Partial<Record<Variant, { src: string; alt: string }>> = {
     src: "/images/blog/nutritsiolog-vs-dietolog.jpg",
     alt: "Сбалансированное здоровое питание — тарелка с киноа и свежими овощами",
   },
+  detox: {
+    src: "/images/blog/detoks.jpg",
+    alt: "Детокс-вода с цитрусом в графине и стаканах — мягкое очищение организма",
+  },
+  keto: {
+    src: "/images/blog/keto.jpg",
+    alt: "Кето-завтрак: яйцо, авокадо, черника и миндаль на тарелке",
+  },
+  pregnancy: {
+    src: "/images/blog/pregnancy.jpg",
+    alt: "Беременная женщина ест яблоко — здоровое питание при подготовке к беременности",
+  },
 };
 
 /* Brand palette */
