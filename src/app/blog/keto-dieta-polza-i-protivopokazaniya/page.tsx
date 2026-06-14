@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArticleCTA } from "../_components/ArticleCTA";
 import { ArticleHero } from "../_components/ArticleHero";
+import { RelatedArticles } from "../_components/RelatedArticles";
 
 const SITE_URL = "https://nutriwave.pro";
 const SLUG = "keto-dieta-polza-i-protivopokazaniya";
@@ -213,6 +214,8 @@ export default function Article() {
 
         <ArticleCTA />
       </article>
+
+      <RelatedArticles currentSlug="keto-dieta-polza-i-protivopokazaniya" />
     </>
   );
 }

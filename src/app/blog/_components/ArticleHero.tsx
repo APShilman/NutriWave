@@ -1,4 +1,4 @@
-type Variant = "nutritionist" | "detox" | "keto" | "pregnancy";
+export type Variant = "nutritionist" | "detox" | "keto" | "pregnancy";
 
 /* Brand palette */
 const C = {
@@ -168,17 +168,24 @@ function Pregnancy({ id }: { id: string }) {
   );
 }
 
+const SCENES: Record<Variant, ({ id }: { id: string }) => React.ReactElement> = {
+  nutritionist: Nutritionist,
+  detox: Detox,
+  keto: Keto,
+  pregnancy: Pregnancy,
+};
+
 export function ArticleHero({ variant }: { variant: Variant }) {
-  const map = {
-    nutritionist: Nutritionist,
-    detox: Detox,
-    keto: Keto,
-    pregnancy: Pregnancy,
-  };
-  const Scene = map[variant];
+  const Scene = SCENES[variant];
   return (
     <div className="mb-8 rounded-[20px] overflow-hidden shadow-[0_2px_20px_rgba(58,125,92,0.08)]">
       <Scene id={variant} />
     </div>
   );
+}
+
+/* Compact thumbnail for cards and related lists */
+export function ArticleThumb({ variant }: { variant: Variant }) {
+  const Scene = SCENES[variant];
+  return <Scene id={`${variant}-t`} />;
 }

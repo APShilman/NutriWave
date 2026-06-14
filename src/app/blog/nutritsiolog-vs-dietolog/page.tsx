@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArticleHero } from "../_components/ArticleHero";
+import { RelatedArticles } from "../_components/RelatedArticles";
 
 const SITE_URL = "https://nutriwave.pro";
 
@@ -290,6 +291,8 @@ export default function Article() {
           </div>
         </div>
       </article>
+
+      <RelatedArticles currentSlug="nutritsiolog-vs-dietolog" />
 
       {/* Back to blog */}
       <div className="mt-8 text-center">
