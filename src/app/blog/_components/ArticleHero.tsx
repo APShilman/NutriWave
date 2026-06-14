@@ -1,4 +1,14 @@
+import Image from "next/image";
+
 export type Variant = "nutritionist" | "detox" | "keto" | "pregnancy";
+
+/* Variants backed by a real photograph instead of an SVG scene */
+const PHOTOS: Partial<Record<Variant, { src: string; alt: string }>> = {
+  nutritionist: {
+    src: "/images/blog/nutritsiolog-vs-dietolog.jpg",
+    alt: "Сбалансированное здоровое питание — тарелка с киноа и свежими овощами",
+  },
+};
 
 /* Brand palette */
 const C = {
@@ -280,6 +290,23 @@ const SCENES: Record<Variant, ({ id }: { id: string }) => React.ReactElement> = 
 };
 
 export function ArticleHero({ variant }: { variant: Variant }) {
+  const photo = PHOTOS[variant];
+  if (photo) {
+    return (
+      <div className="mb-8 rounded-[20px] overflow-hidden shadow-[0_2px_20px_rgba(58,125,92,0.08)]">
+        <div className="relative w-full aspect-[16/7]">
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 740px"
+            priority
+          />
+        </div>
+      </div>
+    );
+  }
   const Scene = SCENES[variant];
   return (
     <div className="mb-8 rounded-[20px] overflow-hidden shadow-[0_2px_20px_rgba(58,125,92,0.08)]">
@@ -290,6 +317,20 @@ export function ArticleHero({ variant }: { variant: Variant }) {
 
 /* Compact thumbnail for cards and related lists */
 export function ArticleThumb({ variant }: { variant: Variant }) {
+  const photo = PHOTOS[variant];
+  if (photo) {
+    return (
+      <div className="relative w-full aspect-[16/7]">
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, 360px"
+        />
+      </div>
+    );
+  }
   const Scene = SCENES[variant];
   return <Scene id={`${variant}-t`} />;
 }
