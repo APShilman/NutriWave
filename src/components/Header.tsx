@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { label: "Кейсы", href: "#cases" },
   { label: "Отзывы", href: "#reviews" },
   { label: "FAQ", href: "#faq" },
+  { label: "Статьи", href: "/blog" },
   { label: "Контакты", href: "#contacts" },
 ];
 

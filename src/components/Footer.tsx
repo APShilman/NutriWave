@@ -32,6 +32,7 @@ export default function Footer() {
                 ["Кейсы", "#cases"],
                 ["Отзывы", "#reviews"],
                 ["FAQ", "#faq"],
+                ["Статьи", "/blog"],
                 ["Контакты", "#contacts"],
               ].map(([label, href]) => (
                 <a
