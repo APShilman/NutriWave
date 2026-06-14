@@ -24,6 +24,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${base}/blog/detoks-s-chego-nachat`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/keto-dieta-polza-i-protivopokazaniya`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${base}/blog/pitanie-pri-podgotovke-k-beremennosti`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${base}/privacy`,
       lastModified: now,
       changeFrequency: "yearly",

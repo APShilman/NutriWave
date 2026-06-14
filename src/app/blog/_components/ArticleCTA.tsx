@@ -1,0 +1,58 @@
+import Link from "next/link";
+
+export function ArticleCTA() {
+  return (
+    <>
+      <div className="mt-10 p-6 sm:p-8 bg-accent-warm rounded-2xl text-center">
+        <h3 className="font-[var(--font-heading)] text-xl font-semibold text-text-main mb-2">
+          Хотите разобраться со своим питанием?
+        </h3>
+        <p className="text-sm text-text-secondary mb-5 max-w-md mx-auto">
+          Запишитесь на индивидуальную консультацию — разберём ваши анализы, составим
+          персональный план питания и подберём нутрицевтическую поддержку.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href="https://t.me/AnnaNutriWave"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white text-sm font-bold rounded-full hover:bg-primary-dark transition-colors"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+            </svg>
+            Записаться в Telegram
+          </a>
+          <Link
+            href="/#contacts"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary text-primary text-sm font-bold rounded-full hover:bg-primary hover:text-white transition-colors"
+          >
+            Все контакты
+          </Link>
+        </div>
+      </div>
+
+      <div className="mt-8 text-center">
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 text-primary text-sm font-semibold hover:text-primary-dark transition-colors"
+        >
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+          Все статьи
+        </Link>
+      </div>
+    </>
+  );
+}
