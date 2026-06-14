@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArticleHero } from "../_components/ArticleHero";
 import { RelatedArticles } from "../_components/RelatedArticles";
+import { GeneticsCallout } from "../_components/GeneticsCallout";
 
 const SITE_URL = "https://nutriwave.pro";
 
@@ -244,6 +245,8 @@ export default function Article() {
               <strong>Индивидуальный подход</strong> — отсутствие шаблонных диет
             </li>
           </ul>
+
+          <GeneticsCallout lead="Гены влияют на то, как вы усваиваете витамины, реагируете на разные продукты и склонны ли к дефицитам. Именно поэтому генетический тест помогает нутрициологу подобрать питание не «как у всех», а точно под ваш организм." />
 
           <h2>Итог</h2>
           <p>

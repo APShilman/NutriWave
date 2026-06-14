@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArticleCTA } from "../_components/ArticleCTA";
 import { ArticleHero } from "../_components/ArticleHero";
 import { RelatedArticles } from "../_components/RelatedArticles";
+import { GeneticsCallout } from "../_components/GeneticsCallout";
 
 const SITE_URL = "https://nutriwave.pro";
 const SLUG = "pitanie-pri-podgotovke-k-beremennosti";
@@ -205,6 +206,8 @@ export default function Article() {
             Подготовка к беременности — это инвестиция в здоровье малыша и в ваше
             самочувствие во время вынашивания.
           </blockquote>
+
+          <GeneticsCallout lead="Усвоение фолатов, витамина D, железа и других ключевых нутриентов напрямую зависит от ваших генов. Генетический тест помогает заранее увидеть эти особенности и подготовить организм к беременности максимально точно — особенно важно по фолатному обмену." />
 
           <h2>Индивидуальный подход</h2>
           <p>

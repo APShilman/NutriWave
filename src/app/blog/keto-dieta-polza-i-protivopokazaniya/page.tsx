@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArticleCTA } from "../_components/ArticleCTA";
 import { ArticleHero } from "../_components/ArticleHero";
 import { RelatedArticles } from "../_components/RelatedArticles";
+import { GeneticsCallout } from "../_components/GeneticsCallout";
 
 const SITE_URL = "https://nutriwave.pro";
 const SLUG = "keto-dieta-polza-i-protivopokazaniya";
@@ -198,6 +199,8 @@ export default function Article() {
             <li>Не забывайте про зелень и низкоуглеводные овощи</li>
             <li>Контролируйте самочувствие и анализы в динамике</li>
           </ul>
+
+          <GeneticsCallout lead="Насколько хорошо вы переносите жиры и углеводы, во многом определяет генетика. Тест показывает, подходит ли вам высокожировое питание в принципе и как ваш организм реагирует на разные типы жиров — это избавляет от экспериментов вслепую." />
 
           <h2>Вывод</h2>
           <p>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArticleCTA } from "../_components/ArticleCTA";
 import { ArticleHero } from "../_components/ArticleHero";
 import { RelatedArticles } from "../_components/RelatedArticles";
+import { GeneticsCallout } from "../_components/GeneticsCallout";
 
 const SITE_URL = "https://nutriwave.pro";
 const SLUG = "detoks-s-chego-nachat";
@@ -199,6 +200,8 @@ export default function Article() {
             Лучший детокс — это образ жизни, при котором организму не нужно
             «отрабатывать» постоянные перегрузки.
           </blockquote>
+
+          <GeneticsCallout lead="Скорость, с которой ваш организм обезвреживает токсины, во многом заложена в генах — у кого-то ферменты печени работают быстрее, у кого-то медленнее. Зная свою генетику, программу детоксикации можно выстроить точно под ваши особенности, а не по общим схемам из интернета." />
 
           <h2>Когда нужен специалист</h2>
           <p>
