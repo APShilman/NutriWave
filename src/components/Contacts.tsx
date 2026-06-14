@@ -11,7 +11,7 @@ export default function Contacts() {
       className="relative py-16 md:py-32 overflow-hidden"
       style={{ background: "transparent" }}
     >
-      <span className="section-number">09</span>
+      <span className="section-number">10</span>
 
       {/* Decorative elements */}
       <LeafSVG className="deco w-[130px] top-12 left-8 rotate-[-15deg] text-primary opacity-[0.10]" />

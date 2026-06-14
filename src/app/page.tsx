@@ -7,6 +7,7 @@ import Gift from "@/components/Gift";
 import Cases from "@/components/Cases";
 import Reviews from "@/components/Reviews";
 import FAQ from "@/components/FAQ";
+import BlogPreview from "@/components/BlogPreview";
 import Contacts from "@/components/Contacts";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
@@ -318,6 +319,7 @@ export default function Home() {
           <Cases />
           <Reviews />
           <FAQ />
+          <BlogPreview />
           <Contacts />
         </main>
       </div>
