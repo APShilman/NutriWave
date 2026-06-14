@@ -9,7 +9,7 @@ const GUIDES = [
     description:
       "Наглядное руководство по составлению сбалансированного рациона: пропорции белков, жиров, углеводов и клетчатки в каждом приёме пищи",
     cover: "/guides/guide-nutrition-plate-cover.webp",
-    href: "/guides/guide-nutrition-plate.pdf",
+    href: "https://disk.yandex.ru/i/WFqqmYQZocM9dg",
     color: "#F0EAD5",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -22,7 +22,7 @@ const GUIDES = [
     description:
       "Научно обоснованные рекомендации по гигиене сна: режим, мелатонин, питание перед сном и создание идеальных условий для восстановления",
     cover: "/guides/guide-sleep-cover.webp",
-    href: "/guides/guide-sleep.pdf",
+    href: "https://disk.yandex.ru/i/GWVpLakjm2_fAw",
     color: "#D5E0F0",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -35,7 +35,7 @@ const GUIDES = [
     description:
       "Практические техники управления стрессом, дыхательные упражнения и стратегии восстановления нервной системы в повседневной жизни",
     cover: "/guides/guide-stress-cover.webp",
-    href: "/guides/guide-stress.pdf",
+    href: "https://disk.yandex.ru/i/LajKXOpMFbjQcg",
     color: "#E8D5F5",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -48,7 +48,7 @@ const GUIDES = [
     description:
       "Как поддержать лимфатическую систему: самомассаж, питание, движение и простые привычки для снятия отёчности и укрепления иммунитета",
     cover: "/guides/guide-lymph-cover.webp",
-    href: "/guides/guide-lymph.pdf",
+    href: "https://disk.yandex.ru/i/MHorP8W0bUHr8g",
     color: "#D5F0E8",
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -146,7 +146,8 @@ export default function Gift() {
                   </a>
                   <a
                     href={guide.href}
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center gap-1 sm:gap-1.5 px-2 py-1.5 sm:px-3 sm:py-2 rounded-lg border border-primary text-primary text-[10px] sm:text-xs font-semibold hover:bg-primary/5 transition-colors flex-1"
                   >
                     <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

@@ -164,7 +164,7 @@ const jsonLd = {
       name: "Тарелка здорового питания",
       description:
         "Наглядное руководство по составлению сбалансированного рациона: пропорции белков, жиров, углеводов и клетчатки в каждом приёме пищи.",
-      url: `${SITE_URL}/guides/guide-nutrition-plate.pdf`,
+      url: "https://disk.yandex.ru/i/WFqqmYQZocM9dg",
       encodingFormat: "application/pdf",
       inLanguage: "ru-RU",
       isAccessibleForFree: true,
@@ -176,7 +176,7 @@ const jsonLd = {
       name: "Здоровый сон",
       description:
         "Научно обоснованные рекомендации по гигиене сна: режим, мелатонин, питание перед сном и условия для восстановления.",
-      url: `${SITE_URL}/guides/guide-sleep.pdf`,
+      url: "https://disk.yandex.ru/i/GWVpLakjm2_fAw",
       encodingFormat: "application/pdf",
       inLanguage: "ru-RU",
       isAccessibleForFree: true,
@@ -188,7 +188,7 @@ const jsonLd = {
       name: "Работа со стрессом",
       description:
         "Практические техники управления стрессом, дыхательные упражнения и стратегии восстановления нервной системы.",
-      url: `${SITE_URL}/guides/guide-stress.pdf`,
+      url: "https://disk.yandex.ru/i/LajKXOpMFbjQcg",
       encodingFormat: "application/pdf",
       inLanguage: "ru-RU",
       isAccessibleForFree: true,
@@ -200,7 +200,7 @@ const jsonLd = {
       name: "Всё про лимфу",
       description:
         "Как поддержать лимфатическую систему: самомассаж, питание, движение и привычки для снятия отёчности и укрепления иммунитета.",
-      url: `${SITE_URL}/guides/guide-lymph.pdf`,
+      url: "https://disk.yandex.ru/i/MHorP8W0bUHr8g",
       encodingFormat: "application/pdf",
       inLanguage: "ru-RU",
       isAccessibleForFree: true,

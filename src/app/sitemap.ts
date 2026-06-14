@@ -29,29 +29,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.3,
     },
-    {
-      url: `${base}/guides/guide-nutrition-plate.pdf`,
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.5,
-    },
-    {
-      url: `${base}/guides/guide-sleep.pdf`,
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.5,
-    },
-    {
-      url: `${base}/guides/guide-stress.pdf`,
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.5,
-    },
-    {
-      url: `${base}/guides/guide-lymph.pdf`,
-      lastModified: now,
-      changeFrequency: "yearly",
-      priority: 0.5,
-    },
   ];
 }
