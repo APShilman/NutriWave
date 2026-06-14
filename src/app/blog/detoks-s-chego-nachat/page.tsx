@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArticleCTA } from "../_components/ArticleCTA";
+import { ArticleHero } from "../_components/ArticleHero";
 
 const SITE_URL = "https://nutriwave.pro";
 const SLUG = "detoks-s-chego-nachat";
@@ -105,6 +106,8 @@ export default function Article() {
             </div>
           </div>
         </div>
+
+        <ArticleHero variant="detox" />
 
         {/* Content */}
         <div className="prose prose-green max-w-none text-text-main [&_h2]:font-[var(--font-heading)] [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:font-[var(--font-heading)] [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:text-base [&_p]:leading-relaxed [&_p]:mb-4 [&_p]:text-text-secondary [&_ul]:mb-4 [&_ul]:pl-5 [&_li]:text-text-secondary [&_li]:text-base [&_li]:leading-relaxed [&_strong]:text-text-main [&_ol]:mb-4 [&_ol]:pl-5 [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-text-secondary">
