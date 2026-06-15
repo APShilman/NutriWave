@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 200" width="620" height="200">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&amp;family=Nunito+Sans:wght@700&amp;display=swap');</style>
+  </defs>
+  <rect width="620" height="200" fill="#F5F2EC"/>
+  <!-- leaf mark -->
+  <g transform="translate(40 44) scale(3.5)" fill="none">
+    <path d="M16 2C9 2 4 8 4 14c0 4 2 7.5 5 10l7 6 7-6c3-2.5 5-6 5-10 0-6-5-12-12-12z" fill="#3A7D5C" opacity="0.16"/>
+    <path d="M16 6c-2 3-3 7-2 11s4 7 7 9" stroke="#3A7D5C" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M16 6c2 3 3 7 2 11s-4 7-7 9" stroke="#3A7D5C" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M16 6v18" stroke="#3A7D5C" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  </g>
+  <!-- wordmark -->
+  <text x="170" y="98" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="58" font-weight="600" fill="#2B3A2E" letter-spacing="1">NutriWave</text>
+  <text x="172" y="132" font-family="'Nunito Sans', Arial, sans-serif" font-size="18" font-weight="600" fill="#3A7D5C" letter-spacing="4">КЛИНИЧЕСКИЙ НУТРИЦИОЛОГ</text>
+</svg>
