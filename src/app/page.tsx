@@ -76,7 +76,16 @@ const jsonLd = {
       description:
         "Клинический и перинатальный нутрициолог. Индивидуальное сопровождение, детокс и кето программы, генетика питания.",
       priceRange: "₽₽",
-      areaServed: { "@type": "Country", name: "Россия" },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Челябинск",
+        addressRegion: "Челябинская область",
+        addressCountry: "RU",
+      },
+      areaServed: [
+        { "@type": "City", name: "Челябинск" },
+        { "@type": "Country", name: "Россия" },
+      ],
       availableLanguage: "ru",
       founder: { "@id": `${SITE_URL}/#person` },
       makesOffer: { "@id": `${SITE_URL}/#consultation` },

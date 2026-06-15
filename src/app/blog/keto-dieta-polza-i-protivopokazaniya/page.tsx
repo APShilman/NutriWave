@@ -23,6 +23,13 @@ export const metadata: Metadata = {
     type: "article",
     locale: "ru_RU",
     siteName: "NutriWave",
+    images: ["/images/blog/keto.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/images/blog/keto.jpg"],
   },
 };
 

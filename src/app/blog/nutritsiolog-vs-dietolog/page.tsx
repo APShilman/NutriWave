@@ -19,6 +19,14 @@ export const metadata: Metadata = {
     type: "article",
     locale: "ru_RU",
     siteName: "NutriWave",
+    images: ["/images/blog/nutritsiolog-vs-dietolog.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Нутрициолог и диетолог — в чём разница?",
+    description:
+      "Чем отличается клинический нутрициолог от диетолога? Разбор от практикующего специалиста.",
+    images: ["/images/blog/nutritsiolog-vs-dietolog.jpg"],
   },
 };
 

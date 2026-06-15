@@ -23,6 +23,13 @@ export const metadata: Metadata = {
     type: "article",
     locale: "ru_RU",
     siteName: "NutriWave",
+    images: ["/images/blog/detoks.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/images/blog/detoks.jpg"],
   },
 };
 
