@@ -80,6 +80,40 @@ const jsonLd = {
       availableLanguage: "ru",
       founder: { "@id": `${SITE_URL}/#person` },
       makesOffer: { "@id": `${SITE_URL}/#consultation` },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: 5,
+        bestRating: 5,
+        worstRating: 1,
+        ratingCount: 5,
+        reviewCount: 5,
+      },
+      review: [
+        {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Мария" },
+          reviewRating: {
+            "@type": "Rating",
+            ratingValue: 5,
+            bestRating: 5,
+            worstRating: 1,
+          },
+          reviewBody:
+            "Огромное спасибо! Вижу результат по коже, я прям другой человек. Энергия появилась, на тренировки хожу, по вечерам пузо не вздувается. Питания придерживаюсь, чувствую себя с ним лучше.",
+        },
+        {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Елена" },
+          reviewRating: {
+            "@type": "Rating",
+            ratingValue: 5,
+            bestRating: 5,
+            worstRating: 1,
+          },
+          reviewBody:
+            "Получила повторные результаты анализов — Вы не представляете как я рада. Полгода назад гемоглобин был 95, ферритин на дне, а сейчас норма. И я это чувствую! Благодарю за подход и терпение.",
+        },
+      ],
       sameAs: [
         "https://t.me/AnnaNutriWave",
         "https://t.me/NutriWav",
@@ -120,44 +154,6 @@ const jsonLd = {
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/#contacts`,
       },
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": `${SITE_URL}/#rating`,
-      itemReviewed: { "@id": `${SITE_URL}/#consultation` },
-      ratingValue: 5,
-      bestRating: 5,
-      worstRating: 1,
-      ratingCount: 5,
-      reviewCount: 5,
-    },
-    {
-      "@type": "Review",
-      "@id": `${SITE_URL}/#review-maria`,
-      itemReviewed: { "@id": `${SITE_URL}/#consultation` },
-      author: { "@type": "Person", name: "Мария", address: "Челябинск" },
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: 5,
-        bestRating: 5,
-        worstRating: 1,
-      },
-      reviewBody:
-        "Огромное спасибо! Вижу результат по коже, я прям другой человек. Энергия появилась, на тренировки хожу, по вечерам пузо не вздувается. Питания придерживаюсь, чувствую себя с ним лучше.",
-    },
-    {
-      "@type": "Review",
-      "@id": `${SITE_URL}/#review-elena`,
-      itemReviewed: { "@id": `${SITE_URL}/#consultation` },
-      author: { "@type": "Person", name: "Елена", address: "Екатеринбург" },
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: 5,
-        bestRating: 5,
-        worstRating: 1,
-      },
-      reviewBody:
-        "Получила повторные результаты анализов — Вы не представляете как я рада. Полгода назад гемоглобин был 95, ферритин на дне, а сейчас норма. И я это чувствую! Благодарю за подход и терпение.",
     },
     {
       "@type": "DigitalDocument",
